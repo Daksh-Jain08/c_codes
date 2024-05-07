@@ -15,10 +15,16 @@ stack create(int size){
     return st;
 }
 
+int isEmpty(stack st){
+    if(st.top==-1)
+        return 1;
+    return 0;
+}
+
 void display(stack st){
     if(st.top<0)
-        printf("The stack is empty!!");
-    for(int i = 0; i<=st.top; i++){
+        printf("The stack is empty!!\n");
+    for(int i = st.top; i>=0; i--){
         printf("%d,", st.arr[i]);
     }
     printf("\n");
@@ -67,12 +73,6 @@ int stackTop(stack st){
 
 int isFull(stack st){
     if(st.top==st.size-1)
-        return 1;
-    return 0;
-}
-
-int isEmpty(stack st){
-    if(st.top==-1)
         return 1;
     return 0;
 }
