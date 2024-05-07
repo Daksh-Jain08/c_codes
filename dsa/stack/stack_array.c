@@ -15,6 +15,15 @@ stack create(int size){
     return st;
 }
 
+void display(stack st){
+    if(st.top<0)
+        printf("The stack is empty!!");
+    for(int i = 0; i<=st.top; i++){
+        printf("%d,", st.arr[i]);
+    }
+    printf("\n");
+}
+
 void push(stack *st, int ele){
     if(st->top>st->size-1){
         printf("Stack Overflow!!\n");
@@ -74,4 +83,15 @@ int main(){
     scanf("%d", &st.size);
     st = create(st.size);
     printf("%d\n", isEmpty(st));
+
+    push(&st, 10);
+    push(&st, 20);
+    push(&st, 30);
+    display(st);
+
+    printf("%d\n", pop(&st));
+    printf("%d\n", pop(&st));
+    printf("%d\n", pop(&st));
+    printf("%d\n", pop(&st));
+    display(st);
 }
