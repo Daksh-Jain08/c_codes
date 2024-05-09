@@ -16,7 +16,7 @@ class Stack{
         void push(int x);
         int pop();
         void display();
-        int peek();
+        int peek(int pos);
 };
 
 void Stack::push(int x){
@@ -38,7 +38,7 @@ int Stack::pop(){
     if(t){
         x = t->data;
         top = top->next;
-        free(t);
+        delete t;
     }
     return x;        
 }
@@ -52,8 +52,20 @@ void Stack::display(){
     cout<<endl;
 }
 
+int Stack::peek(int pos){
+    Node *t = new Node;
+    int x = -1;
+    t = top;
+    for(int i = 1; t && i < pos; i++)
+        t = t->next;
+    if(t)
+        x = t->data;
+    
+    return x;
+}
+
 int main(){
-    Stack st = Stack();
+    Stack st;
     st.push(10);
     st.push(20);
     st.push(30);
