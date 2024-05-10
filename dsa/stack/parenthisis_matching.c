@@ -18,12 +18,13 @@ void push(stack *st, char ele){
     }
 }
 
-int pop(stack *st){
+char pop(stack *st){
     if(st->top == -1)
-        return 0;
+        return 'n';
     else{
+        char x = st->arr[st->top];
         st->top--;
-        return 1;
+        return x;
     }
 }
 
@@ -35,12 +36,22 @@ int isBalance(char *exp){
     st.arr = (char *)malloc(sizeof(char)*st.size);
 
     for(int i = 0; exp[i] != '\0'; i++){
-        if(exp[i]=='(')
+        if(exp[i]=='(' || exp[i]=='{' || exp[i]=='[')
             push(&st, exp[i]);
         
-        if(exp[i]==')')
-            if(!pop(&st))
+        if(exp[i]==')' || exp[i]=='}' || exp[i]==']'){
+            char x = pop(&st);
+            if(x=='n')
                 return 0;
+            else if(x == '(' && exp[i] == ')')
+                continue;
+            else if(x == '{' && exp[i] == '}')
+                continue;
+            else if(x == '[' && exp[i] == ']')
+                continue;
+            else
+                return 0;
+        }
     }
 
     if(st.top == -1)
