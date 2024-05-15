@@ -40,6 +40,7 @@ int isEmpty(stack st){
     return 0;
 }
 
+//checks if the character is an operator
 int is_operator(char c){
     if(c=='+' || c=='-' || c=='*' || c=='/')
         return 1;
@@ -47,6 +48,7 @@ int is_operator(char c){
         return 0;
 }
 
+//gives the precedence of the operator
 int precedence(char c){
     if(c=='+' || c=='-')
         return 1;
@@ -56,29 +58,36 @@ int precedence(char c){
     return 0;
 }
 
+//the function that converts the infix expression to postfix expression
 char* postfix(char *infix){
     stack st;
-    create_stack(&st, strlen(infix)+1);
+    create_stack(&st, strlen(infix)+1);   //creating a stack of required size
 
-    char *ans = (char *)malloc((strlen(infix)+1)*sizeof(char));
+    char *ans = (char *)malloc((strlen(infix)+1)*sizeof(char));     //allocating the memory for the postfix expression
     int j = 0, i = 0;
     
     while(infix[i]!='\0'){
+        //checking if the character is an operator
         if(is_operator(infix[i])){
+            //pushing the operator into the stack if its precedence is higher than the operator at the top of the stack
             if(precedence(st.arr[st.top])<precedence(infix[i]))
                 push(&st, infix[i++]);
+            /*otherwise popping the top operator and adding it to the postfix exp, and doing this till the precedence of the top operator is
+            not less than the current operator*/
             else
                 ans[j++] = pop(&st);
         }
+        //if the character is not operator, it is directly appended to the postfix exp
         else{
             ans[j++] = infix[i++];
         }
     }
 
+    //adding the remaining operators to the postfix exp on completion of iterating through the infix exp
     while(!isEmpty(st)){
         ans[j++] = pop(&st);
     }
-    ans[j] = '\0';
+    ans[j] = '\0';     //adding the end of string character
     
     return ans;
 }
