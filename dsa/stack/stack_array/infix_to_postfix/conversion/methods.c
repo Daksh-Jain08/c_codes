@@ -1,8 +1,7 @@
-
 #include<stdlib.h>
 #include<string.h>
 #include<stdio.h>
-#include"infix_to_postfix.h"
+#include"../infix_to_postfix.h"
 
 void create_char_stack(char_stack *st, int size){
     st->size = size;

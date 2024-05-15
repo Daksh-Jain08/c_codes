@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include"infix_to_postfix.h"
+#include"../infix_to_postfix.h"
 int main(){
     char infix[] = "(a+b)*c-d/e";
     char *ans = improved_postfix(infix);

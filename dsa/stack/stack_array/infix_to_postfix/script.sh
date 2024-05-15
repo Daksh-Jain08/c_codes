@@ -9,8 +9,8 @@ if [[ "$1" == "1" ]]; then
     rm -f *.o
     rm -f a.out
 
-    gcc infix_to_postfix.c -c
-    gcc methods.c -c
+    gcc conversion/infix_to_postfix.c -c
+    gcc conversion/methods.c -c
     gcc infix_to_postfix.o methods.o
 
     ./a.out
@@ -22,8 +22,8 @@ elif [[ "$1" == "2" ]]; then
     rm -f *.o
     rm -f a.out
 
-    gcc improved_infix_to_postfix.c -c
-    gcc methods.c -c
+    gcc conversion/improved_infix_to_postfix.c -c
+    gcc conversion/methods.c -c
     gcc improved_infix_to_postfix.o methods.o
 
     ./a.out
@@ -35,9 +35,9 @@ elif [[ "$1" == "3" ]]; then
     rm -f *.o
     rm -f a.out
 
-    gcc evaluate_main.c -c
-    gcc evaluate_methods.c -c
-    gcc methods.c -c
+    gcc evaluation/evaluate_main.c -c
+    gcc evaluation/evaluate_methods.c -c
+    gcc conversion/methods.c -c
     gcc ../stack_array_methods.c -c
     gcc evaluate_main.o evaluate_methods.o methods.o stack_array_methods.o -lm
 

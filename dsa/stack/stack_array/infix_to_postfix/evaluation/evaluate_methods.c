@@ -2,8 +2,8 @@
 #include<stdlib.h>
 #include<string.h>
 #include<math.h>
-#include"../stack_array.h"
-#include"infix_to_postfix.h"
+#include"../../stack_array.h"
+#include"../infix_to_postfix.h"
 
 int evaluate(char *postfix){
     stack st;

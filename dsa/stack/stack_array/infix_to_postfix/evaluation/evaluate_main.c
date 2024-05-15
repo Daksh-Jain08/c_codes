@@ -1,5 +1,5 @@
-#include"infix_to_postfix.h"
-#include"../stack_array.h"
+#include"../infix_to_postfix.h"
+#include"../../stack_array.h"
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
