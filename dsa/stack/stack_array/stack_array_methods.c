@@ -1,18 +1,11 @@
+#include "stack_array.h"
 #include<stdio.h>
 #include<stdlib.h>
 
-typedef struct Stack{
-    int size;
-    int top;
-    int *arr;
-} stack;
-
-stack create(int size){
-    stack st;
-    st.top = -1;
-    st.size = size;
-    st.arr = (int *)malloc(sizeof(int)*size);
-    return st;
+void create_stack(int size, stack *st){
+    st->top = -1;
+    st->arr = (int *)malloc(sizeof(int)*size);
+    st->size = size;
 }
 
 int isEmpty(stack st){
@@ -75,23 +68,4 @@ int isFull(stack st){
     if(st.top==st.size-1)
         return 1;
     return 0;
-}
-
-int main(){
-    stack st;
-    printf("Enter the size of the stack: ");
-    scanf("%d", &st.size);
-    st = create(st.size);
-    printf("%d\n", isEmpty(st));
-
-    push(&st, 10);
-    push(&st, 20);
-    push(&st, 30);
-    display(st);
-
-    printf("%d\n", pop(&st));
-    printf("%d\n", pop(&st));
-    printf("%d\n", pop(&st));
-    printf("%d\n", pop(&st));
-    display(st);
 }

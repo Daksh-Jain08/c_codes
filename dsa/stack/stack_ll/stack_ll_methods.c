@@ -1,14 +1,6 @@
+#include "stack_ll.h"
 #include<stdio.h>
 #include<stdlib.h>
-
-typedef struct Node{
-    int data;
-    struct Node *next;
-} node;
-
-typedef struct Stack{
-    node* top;
-} stack;
 
 void create(stack *st){
     node *t = NULL;
@@ -91,20 +83,4 @@ int top(stack st){
         return -1;
     
     return st.top->data;
-}
-
-int main(){
-    stack st;
-    create(&st);
-
-    push(&st,10);
-    push(&st,20);
-    push(&st,30);
-
-    display(st);
-
-    printf("%d\n", pop(&st));
-    printf("%d\n", pop(&st));
-    printf("%d\n", pop(&st));
-    printf("%d\n", pop(&st));
 }
