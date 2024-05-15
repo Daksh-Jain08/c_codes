@@ -67,7 +67,7 @@ void Insert(struct Node **A, int row, int col, int ele, bool *ok)
     if (p->col == col - 1)
     {
         p->ele = ele;
-        *ok = true
+        *ok = true;
     }
     else
     {
