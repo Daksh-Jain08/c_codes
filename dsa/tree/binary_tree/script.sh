@@ -22,8 +22,8 @@ elif [[ "$1" == "2" ]]; then
     rm -f *.o
     rm -f a.out
 
-    g++ cpp/main.cpp cpp/queue_methods.cpp cpp/tree_methods.cpp -c
-    g++ main.o queue_methods.o tree_methods.o
+    g++ cpp/main.cpp cpp/queue_methods.cpp cpp/tree_methods.cpp cpp/stack_methods.cpp -c
+    g++ main.o queue_methods.o tree_methods.o stack_methods.o
 
     ./a.out
 

@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.tcc": "cpp",
+        "compare": "cpp",
+        "type_traits": "cpp"
+    },
+    "C_Cpp.default.compilerPath": "/usr/bin/g++"
+}
