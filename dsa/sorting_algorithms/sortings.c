@@ -1,4 +1,5 @@
 #include "header.h"
+#include <stdio.h>
 
 void swap(int *a, int *b) {
   int temp = *a;
@@ -43,5 +44,35 @@ void selectionSort(int *arr, int n) {
       }
     }
     swap(&arr[i], &arr[k]);
+  }
+}
+
+int partition(int *arr, int l, int h) {
+  int pivot = arr[l];
+  int i = l, j = h;
+  do {
+    do {
+      i++;
+    } while (arr[i] <= pivot);
+    do {
+      j--;
+    } while (arr[j] > pivot);
+    printf("i: %d, j: %d\n", i,j);
+    if (i < j){
+      printf("Done, ");
+      swap(&arr[j], &arr[i]);
+    }
+  } while (i < j);
+  swap(&arr[l], &arr[j]);
+  return j;
+}
+
+void quickSort(int *arr, int l, int h) {
+  int j;
+  if(l<h){
+    printf("Entered\n");
+    j = partition(arr, l, h);
+    quickSort(arr, l, j);
+    quickSort(arr, j+1, h);
   }
 }
