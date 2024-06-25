@@ -193,10 +193,20 @@ void recurMergeSort(int *arr, int l, int h) {
   }
 }
 
-void countSort(int *arr, int n, int heighestEle) {
-  int b[heighestEle + 1];
+int findMax(int *arr, int n) {
+  int max = INT_MAX;
+  for (int i = 0; i < n; i++) {
+    if (arr[i] > max)
+      max = arr[i];
+  }
+  return max;
+}
+
+void countSort(int *arr, int n) {
+  int max = findMax(arr, n);
+  int b[max + 1];
   int i = 0;
-  while (i < heighestEle + 1)
+  while (i < max + 1)
     b[i++] = 0;
 
   for (int j = 0; j < n; j++)
@@ -204,12 +214,55 @@ void countSort(int *arr, int n, int heighestEle) {
 
   int j = 0;
   i = 0;
-  while (i < heighestEle + 1) {
+  while (i < max + 1) {
     if (b[i] > 0) {
       arr[j++] = i;
       b[i]--;
     } else {
       i++;
     }
+  }
+}
+
+node *insert(node *head, int data) {
+  node *t = (node *)malloc(sizeof(node));
+  t->data = data;
+  t->next = NULL;
+  node *p = head;
+  if (!p)
+    head = t;
+  else {
+    t->next = head->next;
+    head->next = t;
+  }
+  return head;
+}
+
+void deleteNode(node *head) {
+  if (!head)
+    return;
+  node *p = head->next;
+  head->next = p->next;
+  free(p);
+}
+
+void binSort(int *arr, int n) {
+  int max = findMax(arr, n);
+  node **bin = (node **)malloc(sizeof(node *) * (max + 1));
+  int i;
+  for (i = 0; i < max + 1; i++)
+    bin[i] = NULL;
+
+  int j;
+  for (j = 0; j < n; j++) {
+    insert(bin[arr[j]], arr[j]);
+  }
+  i = j = 0;
+  while (i < max + 1) {
+    while (bin[i] != NULL) {
+      arr[j++] = i;
+      deleteNode(bin[i]);
+    }
+    i++;
   }
 }
