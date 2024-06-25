@@ -155,7 +155,7 @@ void merge(int *a, int l, int mid, int h) {
   int b[h + 1];
   int i = l, j = mid + 1;
   int k = l;
-  printf("l: %d, h: %d, mid: %d\n", l,h,mid);
+  printf("l: %d, h: %d, mid: %d\n", l, h, mid);
   while (i < mid + 1 && j < h + 1) {
     if (a[i] <= a[j])
       b[k++] = a[i++];
@@ -184,30 +184,32 @@ void iterMergeSort(int *arr, int n) {
     merge(arr, 0, p / 2, n - 1);
 }
 
-void recurMergeSort(int *arr, int l, int h){
-  if(l<h){
-    int mid = (h+l)/2;
+void recurMergeSort(int *arr, int l, int h) {
+  if (l < h) {
+    int mid = (h + l) / 2;
     recurMergeSort(arr, l, mid);
-    recurMergeSort(arr, mid+1, h);
-    merge(arr,l,mid,h);
+    recurMergeSort(arr, mid + 1, h);
+    merge(arr, l, mid, h);
   }
 }
 
+void countSort(int *arr, int n, int heighestEle) {
+  int b[heighestEle + 1];
+  int i = 0;
+  while (i < heighestEle + 1)
+    b[i++] = 0;
 
+  for (int j = 0; j < n; j++)
+    b[arr[j]]++;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  int j = 0;
+  i = 0;
+  while (i < heighestEle + 1) {
+    if (b[i] > 0) {
+      arr[j++] = i;
+      b[i]--;
+    } else {
+      i++;
+    }
+  }
+}

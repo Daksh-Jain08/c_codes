@@ -12,3 +12,4 @@ int *mergeSortedArrays(int *a, int *b, int n1, int n2);
 void iterMergeSort(int *arr, int n);
 void recurMergeSort(int *arr, int h, int l);
 void merge(int *a, int h, int l, int mid);
+void countSort(int *a, int n, int heighestEle);
