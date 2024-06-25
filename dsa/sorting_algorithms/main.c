@@ -1,11 +1,13 @@
 #include "header.h"
-#include<limits.h>
+
 int main(){
-  int arr[] = {5,12,17,7,3,10,20,2,INT_MAX};
-  int n = 8;
-  quickSort(arr, 0, n);
-  for(int i = 0; i<n; i++)
-      printf("%d,", arr[i]);
+  int arr1[] = {12,5,17,9,7,3,10,20,2};
+  int n1 = 8;
+  recurMergeSort(arr1, 0, 7);
+
+  for(int i = 0; i<n1; i++)
+      printf("%d,", arr1[i]);
   printf("\n");
+
   return 0;
 }
