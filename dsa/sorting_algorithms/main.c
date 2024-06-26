@@ -1,9 +1,9 @@
 #include "header.h"
 
 int main(){
-  int arr1[] = {12,5,7,9,7,3,10,20,2};
-  int n1 = 9;
-  radixSort(arr1, 9);
+  int arr1[] = {5,7,9,7,3,10,20,2};
+  int n1 = 8;
+  shellSort(arr1, n1);
 
   for(int i = 0; i<n1; i++)
       printf("%d,", arr1[i]);

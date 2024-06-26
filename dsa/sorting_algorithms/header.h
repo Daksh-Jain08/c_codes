@@ -23,3 +23,4 @@ int findMax(int *arr, int n);
 node* insert(node *head, int data);
 node* deleteNode(node* head);
 void radixSort(int *arr, int n);
+void shellSort(int *arr, int n);

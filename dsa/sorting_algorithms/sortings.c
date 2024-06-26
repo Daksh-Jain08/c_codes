@@ -239,7 +239,7 @@ node *insert(node *head, int data) {
   return head;
 }
 
-node* deleteNode(node *head) {
+node *deleteNode(node *head) {
   node *p = head;
   head = head->next;
   free(p);
@@ -275,7 +275,7 @@ void radixSort(int *arr, int n) {
   int divisor = 1;
   while (divisor <= max) {
     int i, j;
-    for(j = 0; j < 10; j++)
+    for (j = 0; j < 10; j++)
       bins[j] = NULL;
     for (i = 0; i < n; i++) {
       int bin_number = (arr[i] / divisor) % 10;
@@ -290,5 +290,20 @@ void radixSort(int *arr, int n) {
       j++;
     }
     divisor *= 10;
+  }
+}
+
+void shellSort(int *arr, int n) {
+  int i, j, gap;
+  for (gap = n / 2; gap >= 1; gap /= 2) {
+    for (i = gap; i < n; i++) {
+      int temp = arr[i];
+      j = i - gap;
+      while (j > 0 && arr[j] > temp) {
+        arr[j + gap] = arr[j];
+        j -= gap;
+      }
+      arr[j + gap] = temp;
+    }
   }
 }
