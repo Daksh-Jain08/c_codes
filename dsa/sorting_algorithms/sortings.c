@@ -194,7 +194,7 @@ void recurMergeSort(int *arr, int l, int h) {
 }
 
 int findMax(int *arr, int n) {
-  int max = INT_MAX;
+  int max = INT_MIN;
   for (int i = 0; i < n; i++) {
     if (arr[i] > max)
       max = arr[i];
@@ -232,37 +232,78 @@ node *insert(node *head, int data) {
   if (!p)
     head = t;
   else {
-    t->next = head->next;
-    head->next = t;
+    while (p->next)
+      p = p->next;
+    p->next = t;
   }
   return head;
 }
 
-void deleteNode(node *head) {
-  if (!head)
-    return;
-  node *p = head->next;
-  head->next = p->next;
-  free(p);
+int deleteNodeInt(node *head) {
+  int x = -1;
+  if (head->next) {
+    node *p = head->next;
+    head->next = p->next;
+    x = p->data;
+    p = NULL;
+  } else {
+    x = head->data;
+    head = NULL;
+  }
+  return x;
+}
+
+node* deleteNode(node *head) {
+  if (head->next) {
+    node *p = head->next;
+    head->next = p->next;
+    free(p);
+  } else {
+    head = NULL;
+  }
+  return head;
 }
 
 void binSort(int *arr, int n) {
   int max = findMax(arr, n);
-  node **bin = (node **)malloc(sizeof(node *) * (max + 1));
+  int size = sizeof(node *) * (max + 1);
+  node **bins = (node **)malloc(size);
   int i;
   for (i = 0; i < max + 1; i++)
-    bin[i] = NULL;
+    bins[i] = NULL;
 
   int j;
   for (j = 0; j < n; j++) {
-    insert(bin[arr[j]], arr[j]);
+    bins[arr[j]] = insert(bins[arr[j]], arr[j]);
   }
   i = j = 0;
   while (i < max + 1) {
-    while (bin[i] != NULL) {
+    while (bins[i] != NULL) {
       arr[j++] = i;
-      deleteNode(bin[i]);
+      bins[i] = deleteNode(bins[i]);
     }
     i++;
+  }
+}
+
+void radixSort(int *arr, int n) {
+  node **bins;
+  bins = (node **)malloc(sizeof(node *) * 10);
+  int max = findMax(arr, n);
+  int divisor = 1;
+  while (divisor <= max) {
+    int i, j;
+    for (i = 0; i < n; i++) {
+      int bin_number = (arr[i] / divisor) % 10;
+      bins[bin_number] = insert(bins[bin_number], arr[i]);
+    }
+    i = j = 0;
+    while (j < 10) {
+      while (bins[j] != NULL) {
+        arr[i++] = deleteNodeInt(bins[j]);
+      }
+      j++;
+    }
+    divisor *= 10;
   }
 }

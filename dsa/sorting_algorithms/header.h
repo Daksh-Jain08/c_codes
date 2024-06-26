@@ -21,4 +21,5 @@ void countSort(int *a, int n);
 void binSort(int *a, int n);
 int findMax(int *arr, int n);
 node* insert(node *head, int data);
-void deleteNode(node* head);
+int deleteNodeInt(node* head);
+node* deleteNode(node* head);
