@@ -1,4 +1,5 @@
 #include<iostream>
+#include<climits>
 
 using namespace std;
 
@@ -27,4 +28,9 @@ class Graph{
     Graph(int **a, int n);
     void breadthFirstSearch(int start);
     void depthFirstSearch(int start, int visited[]);
+    void primsMSP(int **t, int near[]);
+    void kruskalsMSP(int **t, int num_edges);
 };
+
+int find(int set[], int index);
+void unionSet(int set[], int i, int j);
