@@ -82,7 +82,7 @@ int main() {
   char *token2 = mystrtok(input1, ' ');
   while (token2 != NULL) {
     cout << token2 << endl;
-    token2 = strtok(NULL, " ");
+    token2 = mystrtok(NULL, ' ');
   }
   return 0;
 }
