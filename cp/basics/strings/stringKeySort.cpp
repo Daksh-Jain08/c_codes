@@ -4,6 +4,12 @@
 #include <vector>
 
 using namespace std;
+// Sort given strings that contain only numbers and spaces, there are no 2
+// consecutive spaces, and no space at the start or end of a string, you need to
+// sort the string based on an index, suppose the index is 2 then the strings
+// have to be sorted on the basis of their second number, there are 2 more
+// parameters, the sorting can be asked to be reversed at the end and it can
+// also be asked to be done on numeric or lexicographical basis.
 
 string extractTokenAtKey(string str, int key) {
   // string tokenisor
@@ -79,13 +85,13 @@ int main() {
   } else
     sort(vp.begin(), vp.end(), lexicoCompare);
 
-  //Reversing the output if needed
-  if(reversal == "true")
+  // Reversing the output if needed
+  if (reversal == "true")
     reverse(vp.begin(), vp.end());
 
-  //print the output
-  for(auto p : vp)
-    cout<<p.first<<endl;
+  // print the output
+  for (auto p : vp)
+    cout << p.first << endl;
 
   return 0;
 }
