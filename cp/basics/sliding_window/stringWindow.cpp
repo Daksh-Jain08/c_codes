@@ -89,6 +89,9 @@ string stringWindow(string big, string small) {
     }
   }
 
+  if (start_min_window == -1) {
+    return "";
+  }
   return big.substr(start_min_window, size_min_window);
 }
 
