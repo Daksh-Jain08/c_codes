@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// given a big string and a small string, find all the occurrences of the small
+// and return the indices.
 vector<int> stringSearch(string big, string small) {
   // store the occurrences in the result vector
   vector<int> result = {};

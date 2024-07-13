@@ -2,6 +2,9 @@
 
 using namespace std;
 
+// given two strings, find if the second string is a subset of the first string.
+// the second string is a subset of the first string if all the characters of
+// the second string are present in the first string in the same order.
 bool checkSubset(string big, string small) {
   int i = big.length() - 1;
   int j = small.length() - 1;
