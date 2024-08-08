@@ -26,14 +26,14 @@ int modifiedBinarySearch(const vector<int> &v, int k) {
       return mid;
 
     if (v[mid] >= v[start]) {
-      if (v[mid] > k)
+      if (v[mid] > k and v[start] <= k)
         end = mid - 1;
       else
         start = mid + 1;
     }
 
     else {
-      if (v[mid] > k)
+      if (v[mid] > k and v[end] >= k)
         start = mid + 1;
       else
         end = mid - 1;
