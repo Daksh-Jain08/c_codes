@@ -22,6 +22,7 @@ void dnf(vector<int> &v) {
     if (v[mid] == 0) {
       swap(v[low], v[mid]);
       low++;
+      mid++;
     } else if (v[mid] == 2) {
       swap(v[high], v[mid]);
       high--;
