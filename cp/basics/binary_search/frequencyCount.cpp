@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include <vector>
 
@@ -59,11 +60,20 @@ int freqCount(vector<int> v, int k) {
   return max(count, 0);
 }
 
+// approach using STL
+int freqCountSTL(vector<int> v, int k) {
+  int count = 0;
+  auto it1 = lower_bound(v.begin(), v.end(), k);
+  auto it2 = upper_bound(v.begin(), v.end(), k);
+  count = it2 - it1;
+  return count;
+}
+
 int main() {
   vector<int> v = {0, 0, 1, 1, 1, 2, 2, 2, 2, 3, 4, 4};
   int k;
   cin >> k;
-  int count = freqCount(v, k);
+  int count = freqCountSTL(v, k);
   cout << count << endl;
   return 0;
 }
