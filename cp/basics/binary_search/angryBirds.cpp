@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -34,7 +35,8 @@ int angryBirds(vector<int> v, int num) {
 }
 
 int main() {
-  vector<int> v = {1, 5, 7, 11};
+  vector<int> v = {1, 2, 4, 8, 9, 10, 12, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70};
+  sort(v.begin(), v.end());
   int num_of_birds;
   cin >> num_of_birds;
   cout << angryBirds(v, num_of_birds) << endl;
