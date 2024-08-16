@@ -70,6 +70,24 @@ template <typename T> Node<T> *iterReverse(Node<T> *head) {
   return prev;
 }
 
+template <typename T> Node<T> *kReverse(Node<T> *head, int k) {
+  Node<T> *prev = NULL;
+  Node<T> *curr = head;
+  Node<T> *next = NULL;
+  int count = 0;
+  while (curr != NULL and count < k) {
+    next = curr->getNext();
+    curr->setNext(prev);
+    prev = curr;
+    curr = next;
+    count++;
+  }
+  if (next != NULL) {
+    head->setNext(kReverse(next, k));
+  }
+  return prev;
+}
+
 int main() {
   Node<int> *head = NULL;
   insertAtHead(head, 1);
@@ -78,8 +96,12 @@ int main() {
   insertAtHead(head, 3);
   insertAtHead(head, 4);
   insertAtHead(head, 5);
+  insertAtHead(head, 6);
+  insertAtHead(head, 7);
+  insertAtHead(head, 8);
+  insertAtHead(head, 9);
   print(head);
-  Node<int> *temp = iterReverse(head);
+  Node<int> *temp = kReverse(head, 4);
   print(temp);
   return 0;
 }
